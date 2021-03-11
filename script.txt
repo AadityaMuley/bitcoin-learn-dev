@@ -24,3 +24,6 @@ To run the collection of JS files (assuming you have nodejs and npm pre-installe
 
 7. install test runner - jest(executes testing files in JS project. it looks for testing files with test.js extension - we have created block.test.js):
     npm i jest --save-dev
+
+8. run jest testing:
+    npm run test
