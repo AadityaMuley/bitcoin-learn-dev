@@ -34,4 +34,16 @@ describe("Blockchain", () => {
         bc2.chain[1].data = "not third"; //data is tampered in the block
         expect(bc.checkChainValidity(bc2.chain)).toBe(false);
     });
+
+    it("replaces the current Blockchain with a valid new Blockchain", () => {
+        bc2.addBlock("fourth");
+        bc.replaceChain(bc2.chain);
+        expect(bc.chain).toEqual(bc2.chain);
+    });
+
+    it("new chain has lesser/equal length to current chain so it is invalid", () => {
+        bc.addBlock("fifth");
+        bc.replaceChain(bc2.chain);
+        expect(bc.chain).not.toEqual(bc2.chain);
+    });
 });
