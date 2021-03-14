@@ -35,6 +35,11 @@ class Block {
     static hash(timestamp, lastHash, data) {
         return SHA256(`${timestamp}${lastHash}${data}`).toString(); //using es6 template string to combine all inputs since we need to hash all inputs to get the unique hash
     }
+
+    static blockHash(block) {
+        const {timestamp, lastHash, data} = block;
+        return Block.hash(timestamp, lastHash, data);
+    }
 }
 
 module.exports = Block;
