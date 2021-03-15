@@ -27,3 +27,28 @@ To run the collection of JS files (assuming you have nodejs and npm pre-installe
 
 8. run jest testing:
     npm run test
+
+9. Add the express module to npm which is required to build our API:
+    npm i express  --save
+
+10. run the express app on default port 3001:
+    npm run dev
+    run the express app on custom port:
+    HTTP_PORT=*MENTION PORT NUMBER* npm run dev
+
+11. Install Postman according to your Operating System - Google it if you are unfamiliar - run the follwing GET request and press send (ensure step 10 is running in the baground):
+    localhost:3001/blocks
+
+12. Add body parser module - it has middleware function which allows us to receive JSON data within POST request in our express app from the users who create those post requests
+    npm i body-parser --save
+
+13. Goto Postman and do the following:
+    a. add a new POST request tab
+    b. enter request URL: localhost:3001/mine
+    c. goto Body (below request URL)
+    d. click on raw
+    e. select file format as "JSON" from the dropdown menu
+    f. add the data:
+        {
+            "data": "random-1"
+        }
