@@ -40,3 +40,30 @@ Commands to setup the required environment (assuming you have nodejs and npm pre
 ```
     npm run test
 ```
+- Add the express module to npm which is required to build our API:
+```
+    npm i express  --save
+```
+- running the dev:
+  - run the express app on default port 3001: ` npm run dev `
+  - run the express app on custom port: ` HTTP_PORT=*MENTION PORT NUMBER* npm run dev `
+- Install Postman according to your Operating System - Google it if you are unfamiliar - run the follwing GET request and press send (ensure step 10 is running in the baground):
+```
+    localhost:3001/blocks
+```
+- Add body parser module - it has middleware function which allows us to receive JSON data within POST request in our express app from the users who create those post requests:
+```
+    npm i body-parser --save
+```
+- Goto Postman and do the following:
+  - add a new POST request tab
+  - enter request URL: `localhost:3001/mine`
+  - goto Body (below request URL)
+  - click on raw
+  - select file format as "JSON" from the dropdown menu
+  - add the data:
+  ```
+        {
+            "data": "random-1"
+        }
+  ```
