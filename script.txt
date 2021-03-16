@@ -52,3 +52,6 @@ To run the collection of JS files (assuming you have nodejs and npm pre-installe
         {
             "data": "random-1"
         }
+
+14. Add the websocket module - ws which is requierd to run multiple server instances:
+    npm i ws --save
