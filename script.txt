@@ -61,10 +61,15 @@ To run the collection of JS files (assuming you have nodejs and npm pre-installe
     b. Terminal 2: HTTP_PORT=3002 P2P_PORT=5002 PEERS=ws://localhost:5001 npm run dev
     c. Terminal 3: HTTP_PORT=3003 P2P_PORT=5003 PEERS=ws://localhost:5001,ws://localhost:5002 npm run dev
 
-16. To check Blockchain communication setup in peer-to-peer network (longest chain func not implmented yet):
+16. To check Blockchain communication setup in peer-to-peer network (before longest chain func is implmented):
     a. Terminal 1: npm run dev
     b. open Postman and do Step 13 couple of time with different data to add in some blocks
     c. Terminal 2: HTTP_PORT=3002 P2P_PORT=5002 PEERS=ws://localhost:5001 npm run dev
     d. Terminal 2 will immediately display the original blockchain on PORT=3001 and Terminal 1 display the blockchain on PORT=3002
 
-
+17. To check Blockchain communication setup in peer-to-peer network (after longest chain func is implmented):
+    a. Terminal 1: npm run dev
+    b. open Postman and do Step 13 couple of time with different data to add in some blocks
+    c. Terminal 2: HTTP_PORT=3002 P2P_PORT=5002 PEERS=ws://localhost:5001 npm run dev
+    d. Now run GET request in Postman using: localhost:3002/blocks
+    e. we see that even though we did not add any blocks on the peer on PORT=3002 due to websocket communication setup it automatically replaced its shorter blockchain with the longer one on PORT=3001

@@ -29,7 +29,7 @@ class P2pServer {
 
         this.messageHandler(socket);
 
-        socket.send(JSON.stringify(this.blockchain.chain));
+        this.sendChain(socket);
     }
 
     //later instances of app connect to original one immediately when the specify as a peer 
@@ -47,8 +47,19 @@ class P2pServer {
     messageHandler(socket) {
         socket.on("message", message => {
             const data = JSON.parse(message); //converst stringified message to JSON
-            console.log("data", data);
+            //console.log("data", data);
+
+            this.blockchain.replaceChain(data); //replace current blockchain with peer/instance having longest chain
         });
+    }
+
+    sendChain(socket) {
+        socket.send(JSON.stringify(this.blockchain.chain)); //convert Blockchain data into JSON for easy transmission to other peers
+    }
+
+    //update or inform all peers about the newly updated longest blockchain
+    syncChains() {
+        this.socket.forEach(socket => this.sendChain(socket));
     }
 }
 

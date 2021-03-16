@@ -25,6 +25,8 @@ app.post("/mine", (request, response) => {
     const block = bc.addBlock(request.body.data);
     console.log(`New block added: ${block.toString()}`);
 
+    p2pServer.syncChains(); //sync the original and new blockchain and update every node or instance with the longest one
+
     response.redirect("/blocks");
 });
 
