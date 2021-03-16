@@ -42,7 +42,7 @@ To run the collection of JS files (assuming you have nodejs and npm pre-installe
 12. Add body parser module - it has middleware function which allows us to receive JSON data within POST request in our express app from the users who create those post requests
     npm i body-parser --save
 
-13. Goto Postman and do the following:
+13. Goto Postman and do the following to add blocks to blockchain:
     a. add a new POST request tab
     b. enter request URL: localhost:3001/mine
     c. goto Body (below request URL)
@@ -60,3 +60,11 @@ To run the collection of JS files (assuming you have nodejs and npm pre-installe
     a. Terminal 1: npm run dev
     b. Terminal 2: HTTP_PORT=3002 P2P_PORT=5002 PEERS=ws://localhost:5001 npm run dev
     c. Terminal 3: HTTP_PORT=3003 P2P_PORT=5003 PEERS=ws://localhost:5001,ws://localhost:5002 npm run dev
+
+16. To check Blockchain communication setup in peer-to-peer network (longest chain func not implmented yet):
+    a. Terminal 1: npm run dev
+    b. open Postman and do Step 13 couple of time with different data to add in some blocks
+    c. Terminal 2: HTTP_PORT=3002 P2P_PORT=5002 PEERS=ws://localhost:5001 npm run dev
+    d. Terminal 2 will immediately display the original blockchain on PORT=3001 and Terminal 1 display the blockchain on PORT=3002
+
+

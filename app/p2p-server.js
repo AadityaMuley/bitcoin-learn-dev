@@ -26,6 +26,10 @@ class P2pServer {
     connectSocket(socket) {
         this.socket.push(socket);
         console.log("Socket connected");
+
+        this.messageHandler(socket);
+
+        socket.send(JSON.stringify(this.blockchain.chain));
     }
 
     //later instances of app connect to original one immediately when the specify as a peer 
@@ -36,6 +40,14 @@ class P2pServer {
             const socket = new Websocket(peer);
 
             socket.on("open", () => this.connectSocket(socket)); //this will allow us to run code even if we declare the peer first here and then the server instance starts            
+        });
+    }
+
+    //instances receive message events
+    messageHandler(socket) {
+        socket.on("message", message => {
+            const data = JSON.parse(message); //converst stringified message to JSON
+            console.log("data", data);
         });
     }
 }
